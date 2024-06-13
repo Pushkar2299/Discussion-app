@@ -5,7 +5,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: user
-            schemaName: discussion
+            schemaName: railway
             columns:
               - column:
                   name: id
@@ -29,7 +29,7 @@ databaseChangeLog:
         - addPrimaryKey:
             columnNames: id, email
             constraintName: pk_user
-            schemaName: discussion
+            schemaName: railway
             tableName: user
   - changeSet:
       id: add_autoIncrement_user_id
@@ -40,7 +40,7 @@ databaseChangeLog:
             columnName: id
             defaultOnNull: false
             generationType: ALWAYS
-            schemaName: discussion
+            schemaName: railway
             startWith: 1
             tableName: user
   - changeSet:
@@ -50,15 +50,15 @@ databaseChangeLog:
         - addUniqueConstraint:
             columnNames: email
             constraintName: unique_email
-            schemaName: discussion
+            schemaName: railway
             tableName: user
   - changeSet:
-      id: create_discussion_table
+      id: create_railway_table
       author: pushkar
       changes:
         - createTable:
-            tableName: discussion
-            schemaName: discussion
+            tableName: railway
+            schemaName: railway
             columns:
               - column:
                   name: id
@@ -83,10 +83,10 @@ databaseChangeLog:
         - addPrimaryKey:
             columnNames: id
             constraintName: pk_user
-            schemaName: discussion
-            tableName: discussion
+            schemaName: railway
+            tableName: railway
   - changeSet:
-      id: add_autoIncrement_discussion_id
+      id: add_autoIncrement_railway_id
       author: pushkar
       changes:
         - addAutoIncrement:
@@ -94,16 +94,16 @@ databaseChangeLog:
             columnName: id
             defaultOnNull: false
             generationType: ALWAYS
-            schemaName: discussion
+            schemaName: railway
             startWith: 1
-            tableName: discussion
+            tableName: railway
   - changeSet:
       id: create_hashtag_table
       author: pushkar
       changes:
         - createTable:
             tableName: hashtag
-            schemaName: discussion
+            schemaName: railway
             columns:
               - column:
                   name: id
@@ -114,12 +114,12 @@ databaseChangeLog:
                   name: hashtag
                   type: varchar(256)
               - column:
-                  name: discussion_id
+                  name: railway_id
                   type: int(11)
         - addPrimaryKey:
             columnNames: id
             constraintName: pk_hashtag
-            schemaName: discussion
+            schemaName: railway
             tableName: hashtag
   - changeSet:
       id: add_autoIncrement_hashtag_id
@@ -130,7 +130,7 @@ databaseChangeLog:
             columnName: id
             defaultOnNull: false
             generationType: ALWAYS
-            schemaName: discussion
+            schemaName: railway
             startWith: 1
             tableName: hashtag
   - changeSet:
@@ -139,7 +139,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: comment
-            schemaName: discussion
+            schemaName: railway
             columns:
               - column:
                   name: id
@@ -150,7 +150,7 @@ databaseChangeLog:
                   name: comment
                   type: varchar(256)
               - column:
-                  name: discussion_id
+                  name: railway_id
                   type: int(11)
               - column:
                   name: user_id
@@ -164,7 +164,7 @@ databaseChangeLog:
         - addPrimaryKey:
             columnNames: id
             constraintName: pk_comment
-            schemaName: discussion
+            schemaName: railway
             tableName: comment
   - changeSet:
       id: add_autoIncrement_comment_id
@@ -175,7 +175,7 @@ databaseChangeLog:
             columnName: id
             defaultOnNull: false
             generationType: ALWAYS
-            schemaName: discussion
+            schemaName: railway
             startWith: 1
             tableName: comment
   - changeSet:
@@ -184,7 +184,7 @@ databaseChangeLog:
       changes:
         - createTable:
             tableName: reply
-            schemaName: discussion
+            schemaName: railway
             columns:
               - column:
                   name: id
@@ -195,7 +195,7 @@ databaseChangeLog:
                   name: reply
                   type: varchar(256)
               - column:
-                  name: discussion_id
+                  name: railway_id
                   type: int(11)
               - column:
                   name: user_id
@@ -212,7 +212,7 @@ databaseChangeLog:
         - addPrimaryKey:
             columnNames: id
             constraintName: pk_reply
-            schemaName: discussion
+            schemaName: railway
             tableName: reply
   - changeSet:
       id: add_autoIncrement_reply_id
@@ -223,6 +223,6 @@ databaseChangeLog:
             columnName: id
             defaultOnNull: false
             generationType: ALWAYS
-            schemaName: discussion
+            schemaName: railway
             startWith: 1
             tableName: reply
