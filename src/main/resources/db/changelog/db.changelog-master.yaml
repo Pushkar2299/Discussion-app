@@ -1,0 +1,228 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_user_table
+      author: pushkar
+      changes:
+        - createTable:
+            tableName: user
+            schemaName: discussion
+            columns:
+              - column:
+                  name: id
+                  type: int(11)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(64)
+              - column:
+                  name: email
+                  type: varchar(64)
+              - column:
+                  name: mobile_number
+                  type: varchar(16)
+        - addPrimaryKey:
+            columnNames: id, email
+            constraintName: pk_user
+            schemaName: discussion
+            tableName: user
+  - changeSet:
+      id: add_autoIncrement_user_id
+      author: pushkar
+      changes:
+        - addAutoIncrement:
+            columnDataType: int(11)
+            columnName: id
+            defaultOnNull: false
+            generationType: ALWAYS
+            schemaName: discussion
+            startWith: 1
+            tableName: user
+  - changeSet:
+      id: add_uniqueConstraint_email
+      author: pushkar
+      changes:
+        - addUniqueConstraint:
+            columnNames: email
+            constraintName: unique_email
+            schemaName: discussion
+            tableName: user
+  - changeSet:
+      id: create_discussion_table
+      author: pushkar
+      changes:
+        - createTable:
+            tableName: discussion
+            schemaName: discussion
+            columns:
+              - column:
+                  name: id
+                  type: int(11)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: text
+                  type: varchar(256)
+              - column:
+                  name: picture
+                  type: varchar(256)
+              - column:
+                  name: created_by
+                  type: int(11)
+              - column:
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            columnNames: id
+            constraintName: pk_user
+            schemaName: discussion
+            tableName: discussion
+  - changeSet:
+      id: add_autoIncrement_discussion_id
+      author: pushkar
+      changes:
+        - addAutoIncrement:
+            columnDataType: int(11)
+            columnName: id
+            defaultOnNull: false
+            generationType: ALWAYS
+            schemaName: discussion
+            startWith: 1
+            tableName: discussion
+  - changeSet:
+      id: create_hashtag_table
+      author: pushkar
+      changes:
+        - createTable:
+            tableName: hashtag
+            schemaName: discussion
+            columns:
+              - column:
+                  name: id
+                  type: int(11)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: hashtag
+                  type: varchar(256)
+              - column:
+                  name: discussion_id
+                  type: int(11)
+        - addPrimaryKey:
+            columnNames: id
+            constraintName: pk_hashtag
+            schemaName: discussion
+            tableName: hashtag
+  - changeSet:
+      id: add_autoIncrement_hashtag_id
+      author: pushkar
+      changes:
+        - addAutoIncrement:
+            columnDataType: int(11)
+            columnName: id
+            defaultOnNull: false
+            generationType: ALWAYS
+            schemaName: discussion
+            startWith: 1
+            tableName: hashtag
+  - changeSet:
+      id: create_comment_table
+      author: pushkar
+      changes:
+        - createTable:
+            tableName: comment
+            schemaName: discussion
+            columns:
+              - column:
+                  name: id
+                  type: int(11)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: comment
+                  type: varchar(256)
+              - column:
+                  name: discussion_id
+                  type: int(11)
+              - column:
+                  name: user_id
+                  type: int(11)
+              - column:
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            columnNames: id
+            constraintName: pk_comment
+            schemaName: discussion
+            tableName: comment
+  - changeSet:
+      id: add_autoIncrement_comment_id
+      author: pushkar
+      changes:
+        - addAutoIncrement:
+            columnDataType: int(11)
+            columnName: id
+            defaultOnNull: false
+            generationType: ALWAYS
+            schemaName: discussion
+            startWith: 1
+            tableName: comment
+  - changeSet:
+      id: create_reply_table
+      author: pushkar
+      changes:
+        - createTable:
+            tableName: reply
+            schemaName: discussion
+            columns:
+              - column:
+                  name: id
+                  type: int(11)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: reply
+                  type: varchar(256)
+              - column:
+                  name: discussion_id
+                  type: int(11)
+              - column:
+                  name: user_id
+                  type: int(11)
+              - column:
+                  name: comment_id
+                  type: int(11)
+              - column:
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            columnNames: id
+            constraintName: pk_reply
+            schemaName: discussion
+            tableName: reply
+  - changeSet:
+      id: add_autoIncrement_reply_id
+      author: pushkar
+      changes:
+        - addAutoIncrement:
+            columnDataType: int(11)
+            columnName: id
+            defaultOnNull: false
+            generationType: ALWAYS
+            schemaName: discussion
+            startWith: 1
+            tableName: reply
